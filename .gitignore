@@ -1,5 +1,6 @@
 # hidden files
 .*
+lora-gateway-bridge.toml
 
 # binaries
 dist/
@@ -8,4 +9,3 @@ docs/public/
 
 # dependencies
 vendor/
-

@@ -1,10 +1,13 @@
 /*
-NAME:
-   lora-gateway-bridge - abstracts the packet_forwarder protocol into JSON over MQTT
+LoRa Gateway Bridge abstracts the packet_forwarder protocol into JSON over MQTT
+	> documentation & support: https://docs.loraserver.io/lora-gateway-bridge
+	> source & copyright information: https://github.com/brocaar/lora-gateway-bridge
 
-USAGE:
-   main [global options] command [command options] [arguments...]
+Usage:
+  lora-gateway-bridge [flags]
+  lora-gateway-bridge [command]
 
+<<<<<<< HEAD
 COMMANDS:
      help, h  Shows a list of commands or help for one command
 
@@ -24,5 +27,24 @@ GLOBAL OPTIONS:
 COPYRIGHT:
    See http://github.com/brocaar/lora-gateway-bridge for copyright information
 
+=======
+Available Commands:
+  help        Help about any command
+  version     Print the LoRa Gateway Bridge version
+
+Flags:
+      --config string          config file (optional)
+  -h, --help                   help for lora-gateway-bridge
+      --log-level int          debug=5, info=4, error=2, fatal=1, panic=0 (default 4)
+      --mqtt-ca-cert string    mqtt CA certificate file (optional)
+      --mqtt-password string   mqtt server password (optional)
+      --mqtt-server string     mqtt server (e.g. scheme://host:port where scheme is tcp, ssl or ws) (default "tcp://127.0.0.1:1883")
+      --mqtt-username string   mqtt server username (optional)
+      --skip-crc-check         skip the CRC status-check of received packets
+      --udp-bind string        ip:port to bind the UDP listener to (default "0.0.0.0:1700")
+
+Use "lora-gateway-bridge [command] --help" for more information about a command.
+
+>>>>>>> Migrate to config file.
 */
 package main
