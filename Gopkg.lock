@@ -17,12 +17,6 @@
   revision = "752b28f32af50ba9310f09ef10a83d4969caf269"
 
 [[projects]]
-  name = "github.com/codegangsta/cli"
-  packages = ["."]
-  revision = "cfb38830724cc34fedffe9a2a29fb54fa9169cd1"
-  version = "v1.20.0"
-
-[[projects]]
   branch = "master"
   name = "github.com/eclipse/paho.mqtt.golang"
   packages = [
@@ -109,6 +103,12 @@
   packages = ["."]
   revision = "acdc4509485b587f5e675510c4f2c63e90ff68a8"
   version = "v1.1.0"
+
+[[projects]]
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
+  version = "v0.8.0"
 
 [[projects]]
   name = "github.com/sirupsen/logrus"
@@ -269,6 +269,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "f58f38f896f45c929f532800f2e08d59ae57ee74da3ced482e271ccc8d2e78b7"
+  inputs-digest = "58a047200b2af57ca9aebbd5544680c75c39e550cddcfadb764a047daa39c704"
   solver-name = "gps-cdcl"
   solver-version = 1
