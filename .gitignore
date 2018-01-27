@@ -1,6 +1,8 @@
 # hidden files
 .*
-lora-gateway-bridge.toml
+
+# configuration files
+*.toml
 
 # binaries
 dist/
