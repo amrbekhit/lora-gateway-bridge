@@ -173,9 +173,9 @@ func initConfig() {
 		}
 	} else {
 		viper.SetConfigName("lora-gateway-bridge")
-		viper.AddConfigPath("/etc/lora-gateway-bridge/")
-		viper.AddConfigPath("$HOME/.config/lora-gateway-bridge")
 		viper.AddConfigPath(".")
+		viper.AddConfigPath("$HOME/.config/lora-gateway-bridge")
+		viper.AddConfigPath("/etc/lora-gateway-bridge/")
 		if err := viper.ReadInConfig(); err != nil {
 			switch err.(type) {
 			case viper.ConfigFileNotFoundError:
