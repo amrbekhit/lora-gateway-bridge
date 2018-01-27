@@ -53,8 +53,22 @@ configuration at the following paths when `--config` / `-c` is not set:
 * `$HOME/.config/lora-gateway-bridge/lora-gateway-bridge.toml`
 * `/etc/lora-gateway-bridge/lora-gateway-bridge.toml`
 
-To load configuration from a different location, use the `--config` / `-c`
-flag.
+To load configuration from a different location, use the `--config` flag.
+
+To generate a new configuration file `lora-gateway-bridge.toml`, execute the following command:
+
+```bash
+lora-gateway-bridge configfile > lora-gateway-bridge.toml
+```
+
+Note that this configuration file will be pre-filled with the current configuration
+(either loaded from the paths mentioned above, or by using the `--config` flag).
+This makes it possible when new fields get added to upgrade your configuration file
+while preserving your old configuration. Example:
+
+```bash
+lora-gateway-bridge configfile --config lora-gateway-bridge-old.toml > lora-gateway-bridge-new.toml
+```
 
 Example configuration file:
 
@@ -109,20 +123,22 @@ Before LoRa Gateway Bridge 2.3.0 environment variables were used for setting
 configuration flags. Since LoRa Gateway Bridge 2.3.0 the configuration format
 has changed.
 
-When installed from a `.deb` package, this is the recommended way to upgrade:
+The `.deb` installer will automatically migrate your configuration. For non
+`.deb` installations, you can migrate your configuration in the following way:
 
 ```bash
-# load the environment variables
+# Export your environment variables, in this case from a file, but anything
+# that sets your environment variables will work.
 set -a
 source /etc/default/lora-gateway-bridge
 
-# create the configuration directory
+# Create the configuration directory.
 mkdir /etc/lora-gateway-bridge
 
-# generate new configuration file, pre-filled with the configuration set
-# through the environment variables
+# Generate new configuration file, pre-filled with the configuration set
+# through the environment variables.
 lora-gateway-bridge configfile > /etc/lora-gateway-bridge/lora-gateway-bridge.toml
 
-# "remove" the old configuration
+# "Remove" the old configuration (in you were using a file).
 mv /etc/default/lora-gateway-bridge /etc/default/lora-gateway-bridge.old
 ```
