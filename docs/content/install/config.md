@@ -47,14 +47,14 @@ Use "lora-gateway-bridge [command] --help" for more information about a command.
 #### Configuration file
 
 By default `lora-gateway-bridge` will look in the following order for a
-configuration at the following paths when `--config` / `-c` is unset:
+configuration at the following paths when `--config` / `-c` is not set:
 
-* `lora-gateway-bridge.toml`
+* `lora-gateway-bridge.toml` (current working directory)
 * `$HOME/.config/lora-gateway-bridge/lora-gateway-bridge.toml`
 * `/etc/lora-gateway-bridge/lora-gateway-bridge.toml`
 
-To load configuration from a different location, set the `--config` / `-c`
-flag, or use the `CONFIG` environment variable.
+To load configuration from a different location, use the `--config` / `-c`
+flag.
 
 Example configuration file:
 
@@ -62,8 +62,10 @@ Example configuration file:
 [general]
 # ip:port to bind the UDP listener to
 #
-# Example: 0.0.0.0:1700 to listen on port 1700 on all network interfaces.
-# This is the listeren to which the packet-forwarder forwards its data.
+# Example: 0.0.0.0:1700 to listen on port 1700 for all network interfaces.
+# This is the listeren to which the packet-forwarder forwards its data
+# so make sure the 'serv_port_up' and 'serv_port_down' from your
+# packet-forwarder matches this port.
 udp_bind = "0.0.0.0:1700"
 
 # debug=5, info=4, warning=3, error=2, fatal=1, panic=0

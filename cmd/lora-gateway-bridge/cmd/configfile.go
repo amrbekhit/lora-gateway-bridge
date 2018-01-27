@@ -9,11 +9,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// when updating this template, don't forget to update config.md!
 const configTemplate = `[general]
 # ip:port to bind the UDP listener to
 #
-# Example: 0.0.0.0:1700 to listen on port 1700 on all network interfaces.
-# This is the listeren to which the packet-forwarder forwards its data.
+# Example: 0.0.0.0:1700 to listen on port 1700 for all network interfaces.
+# This is the listeren to which the packet-forwarder forwards its data
+# so make sure the 'serv_port_up' and 'serv_port_down' from your
+# packet-forwarder matches this port.
 udp_bind = "{{ .General.UDPBind }}"
 
 # debug=5, info=4, warning=3, error=2, fatal=1, panic=0
