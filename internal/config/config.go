@@ -3,10 +3,13 @@ package config
 // Config defines the configuration structure.
 type Config struct {
 	General struct {
-		UDPBind      string `mapstructure:"udp_bind"`
-		LogLevel     int    `mapstructure:"log_level"`
-		SkipCRCCheck bool   `mapstructure:"skip_crc_check"`
+		LogLevel int `mapstructure:"log_level"`
 	}
+
+	PacketForwarder struct {
+		UDPBind      string `mapstructure:"udp_bind"`
+		SkipCRCCheck bool   `mapstructure:"skip_crc_check"`
+	} `mapstructure:"packet_forwarder"`
 
 	Backend struct {
 		MQTT struct {

@@ -74,6 +74,12 @@ Example configuration file:
 
 ```toml
 [general]
+# debug=5, info=4, warning=3, error=2, fatal=1, panic=0
+log_level = 4
+
+
+# Configuration which relates to the packet-forwarder.
+[packet_forwarder]
 # ip:port to bind the UDP listener to
 #
 # Example: 0.0.0.0:1700 to listen on port 1700 for all network interfaces.
@@ -82,14 +88,12 @@ Example configuration file:
 # packet-forwarder matches this port.
 udp_bind = "0.0.0.0:1700"
 
-# debug=5, info=4, warning=3, error=2, fatal=1, panic=0
-log_level = 4
-
 # Skip the CRC status-check of received packets
 #
 # This is only has effect when the packet-forwarder is configured to forward
 # LoRa frames with CRC errors.
 skip_crc_check = false
+
 
 # Configuration for the MQTT backend.
 [backend.mqtt]

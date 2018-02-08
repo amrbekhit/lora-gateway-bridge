@@ -11,22 +11,26 @@ import (
 
 // when updating this template, don't forget to update config.md!
 const configTemplate = `[general]
+# debug=5, info=4, warning=3, error=2, fatal=1, panic=0
+log_level = {{ .General.LogLevel }}
+
+
+# Configuration which relates to the packet-forwarder.
+[packet_forwarder]
 # ip:port to bind the UDP listener to
 #
 # Example: 0.0.0.0:1700 to listen on port 1700 for all network interfaces.
 # This is the listeren to which the packet-forwarder forwards its data
 # so make sure the 'serv_port_up' and 'serv_port_down' from your
 # packet-forwarder matches this port.
-udp_bind = "{{ .General.UDPBind }}"
-
-# debug=5, info=4, warning=3, error=2, fatal=1, panic=0
-log_level = {{ .General.LogLevel }}
+udp_bind = "{{ .PacketForwarder.UDPBind }}"
 
 # Skip the CRC status-check of received packets
 #
 # This is only has effect when the packet-forwarder is configured to forward
 # LoRa frames with CRC errors.
-skip_crc_check = {{ .General.SkipCRCCheck }}
+skip_crc_check = {{ .PacketForwarder.SkipCRCCheck }}
+
 
 # Configuration for the MQTT backend.
 [backend.mqtt]

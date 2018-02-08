@@ -55,9 +55,9 @@ func init() {
 	rootCmd.PersistentFlags().MarkHidden("skip-crc-check")
 
 	// for backwards compatibility
-	viper.BindEnv("general.udp_bind", "UDP_BIND")
 	viper.BindEnv("general.log_level", "LOG_LEVEL")
-	viper.BindEnv("general.skip_crc_check", "SKIP_CRC_CHECK")
+	viper.BindEnv("packet_forwarder.udp_bind", "UDP_BIND")
+	viper.BindEnv("packet_forwarder.skip_crc_check", "SKIP_CRC_CHECK")
 	viper.BindEnv("backend.mqtt.server", "MQTT_SERVER")
 	viper.BindEnv("backend.mqtt.username", "MQTT_USERNAME")
 	viper.BindEnv("backend.mqtt.password", "MQTT_PASSWORD")
@@ -66,9 +66,9 @@ func init() {
 	viper.BindEnv("backend.mqtt.tls_key", "MQTT_TLS_KEY")
 
 	// for backwards compatibility
-	viper.BindPFlag("general.udp_bind", rootCmd.PersistentFlags().Lookup("udp-bind"))
 	viper.BindPFlag("general.log_level", rootCmd.PersistentFlags().Lookup("log-level"))
-	viper.BindPFlag("general.skip_crc_check", rootCmd.PersistentFlags().Lookup("skip-crc-check"))
+	viper.BindPFlag("packet_forwarder.udp_bind", rootCmd.PersistentFlags().Lookup("udp-bind"))
+	viper.BindPFlag("packet_forwarder.skip_crc_check", rootCmd.PersistentFlags().Lookup("skip-crc-check"))
 	viper.BindPFlag("backend.mqtt.server", rootCmd.PersistentFlags().Lookup("mqtt-server"))
 	viper.BindPFlag("backend.mqtt.username", rootCmd.PersistentFlags().Lookup("mqtt-username"))
 	viper.BindPFlag("backend.mqtt.password", rootCmd.PersistentFlags().Lookup("mqtt-password"))
@@ -117,7 +117,7 @@ func run(cmd *cobra.Command, args []string) error {
 		return pubsub.UnSubscribeGatewayTX(mac)
 	}
 
-	gw, err := gateway.NewBackend(config.C.General.UDPBind, onNew, onDelete, config.C.General.SkipCRCCheck)
+	gw, err := gateway.NewBackend(config.C.PacketForwarder.UDPBind, onNew, onDelete, config.C.PacketForwarder.SkipCRCCheck)
 	if err != nil {
 		log.Fatalf("could not setup gateway backend: %s", err)
 	}
